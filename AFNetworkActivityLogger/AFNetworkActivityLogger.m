@@ -136,6 +136,9 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     id responseObject = nil;
     if (notification.userInfo) {
         responseObject = notification.userInfo[AFNetworkingTaskDidCompleteSerializedResponseKey];
+        if (responseObject&&![NSJSONSerialization isValidJSONObject:responseObject]) {
+            responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+        }
     }
 
     NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:objc_getAssociatedObject(notification.object, AFNetworkRequestStartDate)];
