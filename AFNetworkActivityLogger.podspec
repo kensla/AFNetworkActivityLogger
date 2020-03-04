@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'AFNetworkActivityLogger'
-  s.version  = '3.0.0'
+  s.version  = '3.0.2'
   s.license  = 'MIT'
   s.summary  = 'AFNetworking 3.0 Extension for Network Request Logging'
   s.homepage = 'https://github.com/AFNetworking/AFNetworkActivityLogger'
@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
 
-  s.dependency 'AFNetworking/NSURLSession', '~> 3.0'
+  s.dependency 'AFNetworking/NSURLSession'
 end
