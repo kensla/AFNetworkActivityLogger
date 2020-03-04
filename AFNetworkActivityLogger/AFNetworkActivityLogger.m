@@ -136,8 +136,10 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     id responseObject = nil;
     if (notification.userInfo) {
         responseObject = notification.userInfo[AFNetworkingTaskDidCompleteSerializedResponseKey];
-        if (responseObject&&![responseObject isKindOfClass:[NSURL class]]&&![NSJSONSerialization isValidJSONObject:responseObject]) {
-            responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+        if (responseObject&&![responseObject isKindOfClass:[NSURL class]]) {
+            if (![NSJSONSerialization isValidJSONObject:responseObject]) {
+                responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:&error];
+            }
         }
     }
 
